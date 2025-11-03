@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* --- VARIABLES Y RESETEO GENERAL --- */
+:root {
+    --color-principal: #c28200; /* Dorado/Marrón oscuro */
+    --color-secundario: #ffbe3b; /* Amarillo/Naranja de acento */
+    --color-terciario: #e4c669; /* Amarillo claro para botones */
+    --color-fondo-claro: #eeedec; /* Gris muy claro (fondo general) */
+    --color-fondo-medio: #cfcecc; /* Gris medio (contenedores) */
+    --sombra-fuerte: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: var(--color-fondo-claro);
+    min-height: 100vh;
+}
+
+/* 🚀 ESPACIADOR SUPERIOR: LOGO (IZQUIERDA) Y BOTÓN (DERECHA) */
+.top-spacer {
+    height: 100px; /* Suficiente altura para que quepa el logo */
+    background-color: var(--color-fondo-claro); /* Fondo blanco */
+    display: flex; 
+    justify-content: space-between; /* Separa el logo y el botón a los extremos */
+    align-items: center; /* Centra verticalmente ambos */
+    padding: 0 30px; 
+}
+
+/* Ajuste del contenedor del logo */
+.logo-superior {
+    display: flex;
+    align-items: center;
+}
+
+/* Ajuste del tamaño de la imagen del logo */
+.logo-superior .img_empresa {
+    width: 150px; /* Tamaño del logo */
+    height: auto;
+    margin-left: 0; /* Lo mantiene pegado a la izquierda del padding */
+}
+
+/* --- HEADER / BARRA SUPERIOR DE PERFIL (SOLO PARA LA BARRA DORADA Y USUARIO) --- */
+.persona-header {
+    background-color: var(--color-principal); 
+    color: white;
+    padding: 12px 20px;
+    height: auto; 
+    display: flex;
+    /* Empuja el contenido (solo usuario) completamente a la derecha */
+    justify-content: flex-end; 
+    align-items: center; 
+    box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+.persona {
+    /* El contenedor UL que tiene los H3 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* Apila el título y el nombre */
+    flex-direction: column; 
+    /* Asegura que el texto apilado se alinee a la derecha */
+    align-items: flex-end; 
+    gap: 0; /* No necesitamos espacio horizontal extra entre los ítems */
+}
+
+.persona h3 {
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.7);
+    margin: 0; /* Elimina márgenes de los h3 internos */
+}
+
+/* El nombre estará a la derecha gracias a justify-content: space-between */
+.nombre_persona {
+    font-weight: 500;
+}
+
+/* 🚀 ESTILO DEL BOTÓN DE CERRAR SESIÓN (AMARILLO) */
+.logout-btn {
+    background-color: var(--color-principal);
+    color: rgb(255, 255, 255); /* Texto blanco */
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    /* Se elimino el margin-left porque ya está separado por space-between */
+    margin-left: 0; 
+    box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.logout-btn:hover {
+    background-color: var(--color-secundario);  /* Amarillo más claro al pasar el ratón */
+    transform: translateY(-1px);
+}
+
+/* --- ESTRUCTURA PRINCIPAL (SIDEBAR + CONTENIDO) --- */
+
+/* Creamos un contenedor Flex para el layout de la barra lateral y el contenido */
+.main-layout {
+    display: flex;
+    /* Ajustado para el top-spacer de 100px y persona-header */
+    min-height: calc(100vh - 100px - 75px); 
+}
+
+/* --- BARRA DE NAVEGACIÓN (SIDEBAR) --- */
+
+.nav-sidebar {
+    width: 250px; /* Ancho fijo para la barra lateral */
+    padding: 20px 0;
+    margin-top: 0; /* Ya no se necesita margen superior fijo */
+    list-style: none;
+    background-color: var(--color-fondo-medio);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.nav-sidebar ul {
+    list-style: none;
+}
+
+.botones {
+    margin: 10px 15px; /* Espaciado uniforme */
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: left;
+    transition: background-color 0.3s, border 0.3s;
+    cursor: pointer;
+    list-style: none;
+}
+
+/* 🔑 AÑADIDO: Clase para el botón de menú que está ACTIVO */
+.botones.activo {
+    border: 2px solid var(--color-principal); /* Borde principal */
+    background-color: var(--color-secundario); /* Fondo de acento */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.botones.activo a {
+    color: white; /* Color del texto y el icono en el botón activo */
+}
+
+.botones a {
+    text-decoration: none;
+    color: black;
+    display: block; /* Hace que el área de clic sea todo el botón */
+}
+
+.botones:hover {
+    border: 2px solid var(--color-principal);
+    background-color: white;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.botones a:hover {
+    color: var(--color-principal);
+}
+
+/* --- ESTILO PARA SEPARAR ÍCONOS DEL TEXTO --- */
+/* Aplica un margen hacia la derecha a todos los íconos (etiqueta i) dentro de los enlaces de la barra lateral */
+.nav-sidebar a i {
+    margin-right: 8px; 
+}
+
+/* --- CONTENEDOR PRINCIPAL DE MÓDULOS --- */
+.main-content-area {
+    flex-grow: 1; /* Ocupa todo el espacio restante */
+    padding: 20px;
+    position: relative; /* Base para los elementos fixed/absolute internos */
+}
+
+/* --- MENÚS DE CONTENIDO DESPLEGABLES (Almacén, Material, etc.) --- */
+.contenido {
+    /* **AJUSTE PARA CENTRADO ABSOLUTO (Horizontal y Vertical)** */
+    position: absolute; 
+    top: 50%; /* Lo mueve a la mitad del área principal */
+    left: 50%; /* Lo mueve a la mitad del área principal */
+    transform: translate(-50%, -50%); /* Lo centra perfectamente respecto a su propio tamaño */
+    
+    width: 400px;
+    height: auto; 
+    padding: 20px;
+    border-radius: 8px; 
+    background-color: var(--color-fondo-medio);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.contenido h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-principal);
+}
+
+.contenido > div {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.contenido li {
+    margin: 0 10px; 
+    list-style: none; 
+}
+
+.boton2 a {
+    /* **AJUSTE PARA BOTONES RECTANGULARES** */
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    background-color: var(--color-secundario);
+    padding: 8px 15px;
+    
+    /* 🔑 CAMBIO 1: Hacemos las esquinas más cuadradas */
+    border-radius: 4px; 
+    
+    /* 🔑 CAMBIO 2: Eliminamos o reducimos el borde principal para que se vean más planos/rectangulares */
+    border: 1px solid var(--color-principal); /* Borde más sutil */
+
+    transition: background-color 0.3s;
+}
+
+.boton2 a:hover {
+    background-color: #fefe8f; 
+    /* 🔑 CAMBIO 3: Mantenemos el borde en hover, pero ahora es cuadrado */
+    border: 1px solid var(--color-principal);
+}
+
+/* --- VISTA DE ALMACÉN (Lista de Material/Herramienta) --- */
+.lista_material,
+.lista_herramienta {
+    position: absolute;
+    top: 50%; /* Lo mueve a la mitad del área principal */
+    left: 50%; /* Lo mueve a la mitad del área principal */
+    transform: translate(-50%, -50%); /* Lo centra perfectamente respecto a su propio tamaño */
+    width: 800px; /* Mantenemos el ancho */
+    height: auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--color-fondo-claro);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.lista_material > div, 
+.lista_herramienta > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-fondo-medio);
+    padding-bottom: 10px;
+}
+
+.lista_material h3,
+.lista_herramienta h3 {
+    display: inline-block;
+    width: 45%; /* Ayuda a la alineación en dos columnas */
+    margin: 15px 0 5px; /* Espaciado vertical */
+}
+
+.lista_material img,
+.lista_herramienta img {
+    max-width: 80px; 
+    height: auto;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 4px;
+}
+
+/* CLASES TEXTUALES PARA LIMPIAR MARGENES FIJOS */
+.text1, .text2, .text3, .text4, 
+.text5, .text6, .text7 {
+    /* Se usa Flexbox o Grid para alinear mejor que los float y margins fijos */
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--color-principal);
+    width: 150px; 
+}
+
+.text11, .text22, .text33, .text44,
+.text55, .text66, .text77 {
+    /* Cantidad */
+    font-size: 1em;
+    font-weight: 400;
+    margin-top: 5px;
+    color: #5a5a5a;
+    margin-left: 50px; 
+}
+
+/* --- ESTILOS DE FORMULARIOS (Registro y Edición) --- */
+.registro_herra,
+.registro_mat {
+    /* NOTA: Se ha ELIMINADO 'display: none;' para que JSTL controle qué DIV se renderiza y se muestre */
+    position: absolute;
+    top: 50px;
+    left: 450px;
+    padding: 30px;
+    width: 350px; /* Ancho fijo y limpio */
+    height: auto;
+    /* display: none; <-- ELIMINADO para JSTL */
+    border-radius: 8px;
+    background: var(--color-fondo-medio);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.texto_regis {
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--color-principal);
+}
+
+.regis {
+    width: 90%; /* Ocupa casi todo el formulario */
+    padding: 8px;
+    margin: 8px 5% 15px; /* Centrado y con espacio */
+    border: 1px solid var(--color-principal);
+    border-radius: 4px;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.regis label {
+    display: block;
+    margin: 15px 5% 5px;
+    font-weight: 500;
+}
+
+.boton_regis {
+    display: block;
+    width: 60%;
+    margin: 20px auto 10px; /* Centrado */
+    padding: 10px 0;
+    cursor: pointer;
+    background-color: var(--color-terciario);
+    border: 3px solid var(--color-principal);
+    border-radius: 30px;
+    font-size: 1em;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.boton_regis:hover {
+    background-color: #f5d074;
+    text-shadow: none;
+}
+
+/* --- LISTAS DE EDICIÓN (Material/Herramienta) --- */
+.material_edit,
+.herramienta_edit {
+    /* NOTA: Se ha ELIMINADO 'display: none;' para que JSTL controle qué DIV se renderiza y se muestre */
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    width: 250px;
+    padding: 15px;
+    border-radius: 8px;
+    background: var(--color-fondo-medio);
+    box-shadow: var(--sombra-fuerte);
+    list-style: none;
+    /* display: none; <-- ELIMINADO para JSTL */
+}
+
+.material_edit li,
+.herramienta_edit li {
+    margin: 10px 0;
+}
+
+.material_edit a,
+.herramienta_edit a {
+    display: block;
+    padding: 8px;
+    border-radius: 4px;
+    color: black;
+}
+
+.material_edit a:hover,
+.herramienta_edit a:hover {
+    background-color: var(--color-secundario);
+    color: white;
+}
