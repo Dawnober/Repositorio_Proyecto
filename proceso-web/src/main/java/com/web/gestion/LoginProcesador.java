@@ -103,7 +103,7 @@ public class LoginProcesador extends HttpServlet {
                                 session.setAttribute("isLoggedIn", true);
                                 session.setAttribute("userRol", rol); // Rol interno (ej: "administrador")
                                 
-                                // 🔑 CORRECCIÓN CLAVE: Crear el Rol de DISPLAY para mostrar en el JSP
+                                // Crear el Rol de DISPLAY para mostrar en el JSP
                                 String rolDisplay = "Usuario"; // Valor por defecto
                                 if (rol.equals(ROL_ADMINISTRADOR)) {
                                     rolDisplay = "Administrador";
@@ -113,7 +113,7 @@ public class LoginProcesador extends HttpServlet {
                                     rolDisplay = "Trabajador Autorizado";
                                 }
                                 
-                                session.setAttribute("userRolDisplay", rolDisplay); // <-- ¡LA CLAVE DE LA CORRECCIÓN!
+                                session.setAttribute("userRolDisplay", rolDisplay);
                                 
                                 // 🚀 Guardar el nombre completo
                                 session.setAttribute("userName", nombreCompleto);
@@ -121,12 +121,12 @@ public class LoginProcesador extends HttpServlet {
                                 // 6. Lógica de redirección basada en el rol
                                 String redirectURL = "";
                                 
-                                // 🔑 CORRECCIÓN: Usar el controlador para que cargue la vista por defecto
+                                // Usar el controlador para que cargue la vista por defecto
                                 if (rol.equals(ROL_ADMINISTRADOR)) { 
                                     // Redirigir al controlador para que se encargue de cargar la vista de administrador
                                     redirectURL = request.getContextPath() + "/administrador/controlador"; 
                                 } else if (rol.equals(ROL_ALMACENISTA) || rol.equals(ROL_AUTORIZADO)) {
-                                    // Aquí puedes poner el controlador para el Almacenista/Autorizado
+                                    // Aquí se puede poner el controlador para el Almacenista
                                     redirectURL = ""; 
                                 } else {
                                     redirectURL = request.getContextPath() + "/index.jsp"; 

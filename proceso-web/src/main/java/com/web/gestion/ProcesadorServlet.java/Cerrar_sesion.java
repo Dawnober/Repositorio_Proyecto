@@ -1,6 +1,5 @@
 
 import java.io.IOException;
-// CORRECCIÓN: Se reemplaza 'javax.servlet' por 'jakarta.servlet' para Java 21/Jakarta EE
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -37,7 +36,7 @@ public class Cerrar_sesion extends HttpServlet {
     }
 
     /**
-     * Maneja peticiones GET. Por seguridad y conveniencia, también se dirige al cierre de sesión.
+     * Se maneja peticiones GET. Por seguridad y conveniencia, también se dirige al cierre de sesión.
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -52,7 +52,7 @@ body {
     padding: 12px 20px;
     height: auto; 
     display: flex;
-    /* Empuja el contenido (solo usuario) completamente a la derecha */
+    /* Empuja el contenido (solo rol y nombre) completamente a la derecha */
     justify-content: flex-end; 
     align-items: center; 
     box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.3);
@@ -63,7 +63,7 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    /* Apila el título y el nombre */
+    /* Apila el rol y el nombre completo */
     flex-direction: column; 
     /* Asegura que el texto apilado se alinee a la derecha */
     align-items: flex-end; 
@@ -75,7 +75,6 @@ body {
     margin: 0; /* Elimina márgenes de los h3 internos */
 }
 
-/* El nombre estará a la derecha gracias a justify-content: space-between */
 .nombre_persona {
     font-weight: 500;
 }
@@ -103,7 +102,7 @@ body {
 
 /* --- ESTRUCTURA PRINCIPAL (SIDEBAR + CONTENIDO) --- */
 
-/* Creamos un contenedor Flex para el layout de la barra lateral y el contenido */
+/* Se creo un contenedor Flex para el layout de la barra lateral y el contenido */
 .main-layout {
     display: flex;
     /* Ajustado para el top-spacer de 100px y persona-header */
@@ -135,7 +134,7 @@ body {
     list-style: none;
 }
 
-/* 🔑 AÑADIDO: Clase para el botón de menú que está ACTIVO */
+/* Clase para el botón de menú que está ACTIVO */
 .botones.activo {
     border: 2px solid var(--color-principal); /* Borde principal */
     background-color: var(--color-secundario); /* Fondo de acento */
@@ -163,7 +162,7 @@ body {
 }
 
 /* --- ESTILO PARA SEPARAR ÍCONOS DEL TEXTO --- */
-/* Aplica un margen hacia la derecha a todos los íconos (etiqueta i) dentro de los enlaces de la barra lateral */
+/* Margen hacia la derecha a todos los íconos (etiqueta i) dentro de los enlaces de la barra lateral */
 .nav-sidebar a i {
     margin-right: 8px; 
 }
@@ -182,7 +181,6 @@ body {
     top: 50%; /* Lo mueve a la mitad del área principal */
     left: 50%; /* Lo mueve a la mitad del área principal */
     transform: translate(-50%, -50%); /* Lo centra perfectamente respecto a su propio tamaño */
-    
     width: 400px;
     height: auto; 
     padding: 20px;
@@ -209,25 +207,22 @@ body {
 }
 
 .boton2 a {
-    /* **AJUSTE PARA BOTONES RECTANGULARES** */
+    /* **AJUSTE PARA LOS BOTONES ** */
     display: inline-block;
     text-decoration: none;
     color: black;
     background-color: var(--color-secundario);
     padding: 8px 15px;
-    
-    /* 🔑 CAMBIO 1: Hacemos las esquinas más cuadradas */
+    /* Esquinas cuadradas */
     border-radius: 4px; 
-    
-    /* 🔑 CAMBIO 2: Eliminamos o reducimos el borde principal para que se vean más planos/rectangulares */
+    /* Se redujo el borde principal para que se vean más plano/rectangulares */
     border: 1px solid var(--color-principal); /* Borde más sutil */
-
     transition: background-color 0.3s;
 }
 
 .boton2 a:hover {
     background-color: #fefe8f; 
-    /* 🔑 CAMBIO 3: Mantenemos el borde en hover, pero ahora es cuadrado */
+    /* Ahora el borde es cuadrado */
     border: 1px solid var(--color-principal);
 }
 
@@ -238,7 +233,7 @@ body {
     top: 50%; /* Lo mueve a la mitad del área principal */
     left: 50%; /* Lo mueve a la mitad del área principal */
     transform: translate(-50%, -50%); /* Lo centra perfectamente respecto a su propio tamaño */
-    width: 800px; /* Mantenemos el ancho */
+    width: 800px; /* Se mantiene el ancho */
     height: auto;
     padding: 20px;
     border-radius: 8px;
@@ -294,14 +289,12 @@ body {
 /* --- ESTILOS DE FORMULARIOS (Registro y Edición) --- */
 .registro_herra,
 .registro_mat {
-    /* NOTA: Se ha ELIMINADO 'display: none;' para que JSTL controle qué DIV se renderiza y se muestre */
     position: absolute;
     top: 50px;
     left: 450px;
     padding: 30px;
     width: 350px; /* Ancho fijo y limpio */
     height: auto;
-    /* display: none; <-- ELIMINADO para JSTL */
     border-radius: 8px;
     background: var(--color-fondo-medio);
     box-shadow: var(--sombra-fuerte);
@@ -351,7 +344,6 @@ body {
 /* --- LISTAS DE EDICIÓN (Material/Herramienta) --- */
 .material_edit,
 .herramienta_edit {
-    /* NOTA: Se ha ELIMINADO 'display: none;' para que JSTL controle qué DIV se renderiza y se muestre */
     position: absolute;
     top: 50px;
     left: 40px;
@@ -361,7 +353,6 @@ body {
     background: var(--color-fondo-medio);
     box-shadow: var(--sombra-fuerte);
     list-style: none;
-    /* display: none; <-- ELIMINADO para JSTL */
 }
 
 .material_edit li,

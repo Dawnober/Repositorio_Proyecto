@@ -4,12 +4,10 @@ Administrador.jsp - Vista principal del sistema de gestión para el rol Administ
      - La lógica de SEGURIDAD, VARIABLES de SESIÓN y NAVEGACIÓN se ha movido a AdminControlador.java.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%-- 🔑 Incluir la librería JSTL (Core) para usar etiquetas condicionales como <c:choose> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%-- 
-
-// AHORA (Lógica en Servlet): La seguridad se verifica en AdminControlador.java antes de hacer forward aquí.
+// (Lógica en Servlet): La seguridad se verifica en AdminControlador.java antes de hacer forward aquí.
 --%>
 
 <!DOCTYPE html>
@@ -19,7 +17,7 @@ Administrador.jsp - Vista principal del sistema de gestión para el rol Administ
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>YAS CONSTRUCCIONES S.A.S | Área de Administrador</title>
 
-     <%-- 🔑 CORRECCIÓN DE RUTAS ABSOLUTAS (Recursos): Usamos ${pageContext.request.contextPath} para que la ruta siempre inicie desde la raíz del proyecto, sin importar el URL del Servlet. --%>
+     <%-- 🔑 (Recursos): Se usa ${pageContext.request.contextPath} para que la ruta siempre inicie desde la raíz del proyecto, sin importar el URL del Servlet. --%>
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Administrador.css">
      <link rel="stylesheet" href="${pageContext.request.contextPath}/css/all.min.css">
 </head>
@@ -29,7 +27,7 @@ Administrador.jsp - Vista principal del sistema de gestión para el rol Administ
      <%-- 🚀 CONTENEDOR BLANCO SUPERIOR: LOGO (IZQUIERDA) Y BOTÓN (DERECHA) --%>
      <div class="top-spacer">
          <div class="logo-superior">
-             <%-- 🔑 CORRECCIÓN DE RUTAS (Imagen): Ruta absoluta para la imagen --%>
+             <%-- 🔑 (Imagen): Ruta absoluta para la imagen --%>
              <img src="${pageContext.request.contextPath}/img/empresa2.png" alt="Logo YAS CONSTRUCCIONES S.A.S" class="img_empresa">
          </div>
 
@@ -50,7 +48,7 @@ Administrador.jsp - Vista principal del sistema de gestión para el rol Administ
          <div style="display: flex; align-items: center;">
              <%-- Contenedor del nombre y rol --%>
              <ul class="persona">
-                 <%-- DINÁMICO: Rol. Usamos EL (Expression Language) para acceder a los atributos de sesión/request --%>
+                 <%-- DINÁMICO: Rol. Se usa EL (Expression Language) para acceder a los atributos de sesión/request --%>
                  <h3>${sessionScope.userRolDisplay}</h3> 
                  <%-- DINÁMICO: Nombre COMPLETO --%>
                  <h3 class="nombre_persona">${sessionScope.userName}</h3>
@@ -102,8 +100,7 @@ Administrador.jsp - Vista principal del sistema de gestión para el rol Administ
          
              <%-- 🔑 JSTL: Renderiza dinámicamente el DIV basado en lo que el Servlet puso en 'moduloActual' --%>
              <c:choose>
- 
-         
+
              <%-- Módulo Principal: Almacén --%>
                  <c:when test="${requestScope.moduloActual eq 'contenido1'}">
                  <div id="contenido1" class="contenido">
@@ -183,7 +180,7 @@ Administrador.jsp - Vista principal del sistema de gestión para el rol Administ
                          <%-- Aquí se usaría <c:forEach> para iterar sobre la lista de materiales traída por el Servlet --%>
                          <div>
                              <h3 class="text1">M-1 Cemento</h3>
-                             <%-- 🔑 CORRECCIÓN DE RUTAS (Imagen): Ruta absoluta para la imagen --%>
+                             <%-- (Imagen): Ruta absoluta para la imagen --%>
                              <img src="${pageContext.request.contextPath}/img/cemento.png" alt="Imagen de Cemento" class="img_cemento">
                              <h3 class="text11">800 bultos</h3>
                          </div>
@@ -191,7 +188,7 @@ Administrador.jsp - Vista principal del sistema de gestión para el rol Administ
                      
                          <div>
                              <h3 class="text2">M-2 Ladrillo</h3>
-                             <%-- 🔑 CORRECCIÓN DE RUTAS (Imagen): Ruta absoluta para la imagen --%>
+                             <%-- (Imagen): Ruta absoluta para la imagen --%>
                              <img src="${pageContext.request.contextPath}/img/ladrillo.png" alt="Imagen de Ladrillo" class="img_ladrillo">
                              <h3 class="text22">2000 ladrillos</h3>
                          </div>
@@ -208,7 +205,7 @@ Administrador.jsp - Vista principal del sistema de gestión para el rol Administ
                          <%-- Aquí se usaría <c:forEach> para iterar sobre la lista de herramientas traída por el Servlet --%>
                          <div>
                              <h3 class="text5">H-1 Pulidora</h3>
-                             <%-- 🔑 CORRECCIÓN DE RUTAS (Imagen): Ruta absoluta para la imagen --%>
+                             <%-- (Imagen): Ruta absoluta para la imagen --%>
                              <img src="${pageContext.request.contextPath}/img/pulidora.png" alt="Imagen de Pulidora" class="img_pulidora">
                              <h3 class="text55">10 Pulidoras</h3>
                          </div>
@@ -222,23 +219,23 @@ Administrador.jsp - Vista principal del sistema de gestión para el rol Administ
                  <c:when test="${requestScope.moduloActual eq 'material1'}">
                  <div id="material1" class="registro_mat">
                          <h2>Formulario de Registro de Material</h2>
-                         <%-- Esto se puede incluir de un JSP separado para mantener este archivo limpio: --%>
+                         <%-- Esto se va a incluir en un JSP separado para mantener este archivo limpio: --%>
                          <%-- <jsp:include page="/modulos/registroMaterial.jsp" /> --%>
                          <p>Aquí irá el formulario para el registro de materiales.</p>
                      </div>
                  </c:when>
  
              
-                 <%-- ... Continúa con los <c:when> para todos los otros contenidos (material2, herramienta1, etc.) ... --%>
+                 <%-- ... Se continúa con los <c:when> para todos los otros contenidos (material2, herramienta1, etc.) ... --%>
 
                  <c:otherwise>
-                 <%-- Mensaje por defecto si la variable no está definida --%>
+                 <%-- Mensaje por defecto si la variable no está definida, esto sera de momento... --%>
                      <h1>Bienvenido, ${sessionScope.userName}. Selecciona una opción del menú.</h1>
                  </c:otherwise>
              </c:choose>
  
          
-             <%-- 🔑 NOTA: La lógica para el formulario vacío y la acción absoluta se manejarán mejor en un Servlet POST --%>
+             <%-- 🔑 La lógica para el formulario vacío y la acción absoluta se manejarán mejor en un Servlet POST --%>
              <%--
              <form action="${pageContext.request.contextPath}/api/materiales/registrar" method="POST" autocomplete="off">
                  <div id=""> ... </div>
