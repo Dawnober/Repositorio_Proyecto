@@ -37,30 +37,27 @@
             color: var(--color-texto);
             margin: 0;
             display: flex; 
-            justify-content: center; /* Centra el formulario */
+            justify-content: center; /* Centrar el formulario */
             align-items: center;
             min-height: 100vh;
             position: relative; 
             z-index: 1;
         }
 
-        /* pseudo-elementos para la imagen de fondo de la mitad derecha */
+        /* pseudo-elementos para la imagen de fondo de la derecha */
         body::after {
             content: ""; 
             position: absolute;
             top: 0;
             right: 0; 
-            
             /* TAMAÑO: Cubre exactamente la mitad derecha de la vista (viewport) */
             width: 50vw; 
             height: 100vh; 
-            
             /* IMAGEN Y CONFIGURACIÓN */
             background-image: url('img/Fondo_Formulario.jpeg');
             background-size: cover; 
             background-repeat: no-repeat;
             background-position: center;
-        
             /* Definir la Máscara de Gradiente para el Desvanecimiento */
             mask-image: linear-gradient(
                 to left, 
@@ -75,7 +72,6 @@
             opacity: 0.25; 
             z-index: -1; 
         }
-
 
         /* Contenedor del Formulario de Login */
         .login-form {
@@ -208,20 +204,14 @@
             transform: translateY(0);
         }
         
-        /* 🔑 POSICIONAMIENTO FIJO Y VISIBLE (CORRECCIÓN FINAL) */
+        /* 🔑 POSICIONAMIENTO FIJO Y VISIBLE */
         .message-container {
             position: fixed; 
             width: 300px; /* Ancho deseado */
             z-index: 100; 
-
-            /* 🔑 CLAVE DE POSICIONAMIENTO HORIZONTAL (Ajuste manual para visibilidad) */
-            /* Coloca el mensaje en left: 5px del borde de la pantalla (visible) */
             left: 50px; 
-            
-            /* 🔑 CLAVE DE POSICIONAMIENTO VERTICAL (Fijo debajo del logo) */
+            /* 🔑 OSICIONAMIENTO VERTICAL (Fijo debajo del logo) */
             top: 300px; 
-            
-            /* Eliminamos 'transform' para que no mueva el mensaje fuera de la vista. */
         }
         
         /* Mensajes JSP (feedback del servidor) */

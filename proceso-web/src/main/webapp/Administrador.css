@@ -172,6 +172,8 @@ body {
     flex-grow: 1; /* Ocupa todo el espacio restante */
     padding: 20px;
     position: relative; /* Base para los elementos fixed/absolute internos */
+    min-width: 0; /* Permite que el contenido se comprima si es necesario */
+    display: block; /* Asegura que el flujo sea de bloque, no flex */
 }
 
 /* --- MENÚS DE CONTENIDO DESPLEGABLES (Almacén, Material, etc.) --- */
@@ -287,16 +289,15 @@ body {
 }
 
 /* --- ESTILOS DE FORMULARIOS (Registro y Edición) --- */
-.registro_herra,
+.registro_herra, 
 .registro_mat {
-    position: absolute;
-    top: 50px;
-    left: 450px;
+    max-width: 700px;
+    width: 100%; /* Permite que sea responsivo en pantallas pequeñas */
+    margin: 50px auto 0 auto; /* 50px de margen arriba para bajarlo, y 'auto' para centrar */
     padding: 30px;
-    width: 350px; /* Ancho fijo y limpio */
     height: auto;
     border-radius: 8px;
-    background: var(--color-fondo-medio);
+    background: var(--color-fondo-medio); /* Mantiene el color gris */
     box-shadow: var(--sombra-fuerte);
 }
 

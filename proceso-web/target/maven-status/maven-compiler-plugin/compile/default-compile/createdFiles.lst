@@ -1,3 +1,8 @@
-Cerrar_sesion.class
-com\web\gestion\AdminControlador.class
+com\web\gestion\MaterialApi.class
 com\web\gestion\LoginProcesador.class
+com\web\gestion\Material.class
+com\web\gestion\AdminControlador.class
+com\web\gestion\MaterialApi$RespuestaApi.class
+com\web\gestion\MaterialDAO.class
+com\web\gestion\ConexionConfig.class
+Cerrar_sesion.class
