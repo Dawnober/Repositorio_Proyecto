@@ -1,17 +1,37 @@
 package com.web.gestion;
 
 import java.math.BigDecimal; 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Material {
-    private String nombre;
-    // Se usa BigDecimal para cantidades para evitar problemas de coma flotante
-    private BigDecimal cantidad; 
-    private String unidad; // Ejemplo: 'bultos', 'metros', 'ladrillos'
-    private String descripcion;
     
+    @JsonProperty("id_material")
+    private int id; 
+    
+    private String fecha; // Nuevo campo para la fecha de ingreso
+    private String nombre;
+    private BigDecimal cantidad; 
+    private String unidad; 
+    private String descripcion;
 
     // 1. Constructor vacío (¡CRUCIAL para Jackson!)
     public Material() {} 
+
+    // --- ID ---
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    // --- FECHA ---
+    public String getFecha() {
+        return fecha;
+    }
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
 
     // --- NOMBRE ---
     public String getNombre() {
@@ -48,10 +68,12 @@ public class Material {
     @Override
     public String toString() {
         return "Material{" +
-               "nombre='" + nombre + '\'' +
-               ", cantidad=" + cantidad + 
-               ", unidad='" + unidad + '\'' + 
-               ", descripcion='" + descripcion + '\'' + 
-               '}';
+                "id=" + id +
+                ", fecha='" + fecha + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", cantidad=" + cantidad + 
+                ", unidad='" + unidad + '\'' + 
+                ", descripcion='" + descripcion + '\'' + 
+                '}';
     }
 }

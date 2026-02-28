@@ -183,9 +183,11 @@ body {
     top: 50%; /* Lo mueve a la mitad del área principal */
     left: 50%; /* Lo mueve a la mitad del área principal */
     transform: translate(-50%, -50%); /* Lo centra perfectamente respecto a su propio tamaño */
-    width: 400px;
+    /* MODIFICACIÓN: Se amplió el ancho para que quepan 3 botones y se usa min-width */
+    width: auto;
+    min-width: 500px;
     height: auto; 
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px; 
     background-color: var(--color-fondo-medio);
     box-shadow: var(--sombra-fuerte);
@@ -193,18 +195,21 @@ body {
 
 .contenido h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: var(--color-principal);
 }
 
 .contenido > div {
     list-style: none;
     display: flex;
-    justify-content: space-around;
+    /* MODIFICACIÓN: Cambiado a wrap y center para evitar que se monten */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Espacio uniforme entre botones */
 }
 
 .contenido li {
-    margin: 0 10px; 
+    margin: 5px; 
     list-style: none; 
 }
 
@@ -214,18 +219,20 @@ body {
     text-decoration: none;
     color: black;
     background-color: var(--color-secundario);
-    padding: 8px 15px;
+    padding: 12px 20px; /* Un poco más de padding para que se vean mejor */
     /* Esquinas cuadradas */
     border-radius: 4px; 
     /* Se redujo el borde principal para que se vean más plano/rectangulares */
     border: 1px solid var(--color-principal); /* Borde más sutil */
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-weight: 500;
 }
 
 .boton2 a:hover {
     background-color: #fefe8f; 
-    /* Ahora el borde es cuadrado */
     border: 1px solid var(--color-principal);
+    transform: translateY(-2px); /* Efecto sutil de elevación */
 }
 
 /* --- VISTA DE ALMACÉN (Lista de Material/Herramienta) --- */
@@ -241,51 +248,6 @@ body {
     border-radius: 8px;
     background-color: var(--color-fondo-claro);
     box-shadow: var(--sombra-fuerte);
-}
-
-.lista_material > div, 
-.lista_herramienta > div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--color-fondo-medio);
-    padding-bottom: 10px;
-}
-
-.lista_material h3,
-.lista_herramienta h3 {
-    display: inline-block;
-    width: 45%; /* Ayuda a la alineación en dos columnas */
-    margin: 15px 0 5px; /* Espaciado vertical */
-}
-
-.lista_material img,
-.lista_herramienta img {
-    max-width: 80px; 
-    height: auto;
-    margin-right: 20px;
-    margin-left: 20px;
-    border-radius: 4px;
-}
-
-/* CLASES TEXTUALES PARA LIMPIAR MARGENES FIJOS */
-.text1, .text2, .text3, .text4, 
-.text5, .text6, .text7 {
-    /* Se usa Flexbox o Grid para alinear mejor que los float y margins fijos */
-    font-size: 1.1em;
-    font-weight: 700;
-    color: var(--color-principal);
-    width: 150px; 
-}
-
-.text11, .text22, .text33, .text44,
-.text55, .text66, .text77 {
-    /* Cantidad */
-    font-size: 1em;
-    font-weight: 400;
-    margin-top: 5px;
-    color: #5a5a5a;
-    margin-left: 50px; 
 }
 
 /* --- ESTILOS DE FORMULARIOS (Registro y Edición) --- */
@@ -342,7 +304,7 @@ body {
     text-shadow: none;
 }
 
-/* --- LISTAS DE EDICIÓN (Material/Herramienta) --- */
+/* (Se mantienen el resto de tus estilos de edición y textos intactos abajo) */
 .material_edit,
 .herramienta_edit {
     position: absolute;
