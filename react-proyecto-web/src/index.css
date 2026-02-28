@@ -1,0 +1,193 @@
+/* ------------------------------------------- */
+/* VARIABLES DE COLOR GLOBALES */
+/* ------------------------------------------- */
+:root {
+    --color-principal: #c28200; 
+    --color-fondo: #e9ecef; 
+    --color-texto: #333;
+    --color-borde: #ccc;
+}
+
+/* ------------------------------------------- */
+/* 1. ESTILO DE LA TARJETA CONTENEDORA (.registro-card) */
+/* ------------------------------------------- */
+.registro-card {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-top: 5px solid var(--color-principal); 
+    max-width: 700px; 
+    width: 100%;
+    margin: 40px auto;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ------------------------------------------- */
+/* 2. ESTILO DEL TÍTULO (h2) */
+/* ------------------------------------------- */
+.registro-card h2 {
+    color: var(--color-principal);
+    margin-bottom: 15px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+/* ------------------------------------------- */
+/* 3. ESTILOS DE GRUPOS Y ETIQUETAS */
+/* ------------------------------------------- */
+.form-group-material {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group-material label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-texto);
+}
+
+/* Fila para campos compartidos (como Nombres y Apellidos) */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group-material {
+    flex: 1;
+}
+
+/* ------------------------------------------- */
+/* 4. ESTILOS DE CAMPOS DE ENTRADA (ACTUALIZADO) */
+/* ------------------------------------------- */
+.registro-card input[type="text"],
+.registro-card input[type="number"],
+.registro-card input[type="email"],    /* ✅ Soporte para correo */
+.registro-card input[type="password"], /* ✅ Soporte para clave */
+.registro-card textarea, 
+.registro-card select { 
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    box-sizing: border-box; 
+    font-size: 16px; 
+    color: var(--color-texto); 
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.registro-card input:focus, 
+.registro-card textarea:focus,
+.registro-card select:focus { 
+    border-color: var(--color-principal); 
+    box-shadow: 0 0 0 3px rgba(194, 130, 0, 0.4); 
+    outline: none;
+}
+
+/* ------------------------------------------- */
+/* 5. ESTILO DEL BOTÓN */
+/* ------------------------------------------- */
+.registro-card button {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 25px; 
+}
+
+.registro-card button:hover {
+    background-color: #a06e00;
+    transform: translateY(-1px);
+}
+
+/* ------------------------------------------- */
+/* 6. ESTILOS PARA LAS TABLAS DE INVENTARIO */
+/* ------------------------------------------- */
+.tabla-contenedor {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-top: 5px solid var(--color-principal);
+    margin: 20px auto;
+    width: 95%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tabla-contenedor h2 {
+    color: var(--color-principal);
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.tabla-gestion {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-gestion th {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 14px;
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.tabla-gestion td {
+    padding: 12px;
+    border-bottom: 1px solid var(--color-borde);
+    color: var(--color-texto);
+    font-size: 15px;
+}
+
+.tabla-gestion tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tabla-gestion tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* ------------------------------------------- */
+/* 7. COLORES PARA ESTADOS REPETIDOS (BADGES) - RESTAURADO */
+/* ------------------------------------------- */
+.estado-bueno { 
+    color: #28a745; 
+    font-weight: bold; 
+    background: #e8f5e9;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.estado-regular { 
+    color: #fd7e14; 
+    font-weight: bold; 
+    background: #fff3e0;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.estado-malo { 
+    color: #dc3545; 
+    font-weight: bold; 
+    background: #ffebee;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+}
