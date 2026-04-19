@@ -69,67 +69,159 @@ function GestionHerramienta() {
             const data = await response.json();
             if (response.ok) { 
                 setMessage({ type: 'success', text: data.message });
-                setTimeout(() => { setHerramientaSeleccionada(null); obtenerHerramientas(); }, 1500);
+                setTimeout(() => { 
+                    setHerramientaSeleccionada(null); 
+                    obtenerHerramientas(); 
+                    setTimeout(() => setMessage(null), 3000);
+                }, 1500);
             } else { setMessage({ type: 'error', text: data.message }); }
         } catch (error) { setMessage({ type: 'error', text: 'Error de conexión.' });
         } finally { setLoading(false); }
     };
 
     return (
-        <div className="registro-card"> 
-            {message && (
-                <div style={{ padding: '10px', marginBottom: '15px', borderRadius: '4px', textAlign: 'center', fontWeight: 700, backgroundColor: message.type === 'success' ? '#d8ead8' : '#f7d7da', color: message.type === 'success' ? '#38761d' : '#721c24' }}>
-                    {message.text}
-                </div>
-            )}
-
+        <div className="seccion-centrada">
             {!herramientaSeleccionada ? (
-                <>
-                    <h2 style={{color: '#b37d00', textAlign: 'center', marginBottom: '20px'}}>Edición de Herramientas</h2>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px', textAlign: 'center' }}>
+                <div className="tabla-contenedor" style={{ width: '95%', maxWidth: '900px' }}>
+                    <h2 className="titulo-seccion">
+                        <i className="fa-solid fa-screwdriver-wrench"></i> Gestión de Herramientas
+                    </h2>
+
+                    {message && (
+                        <div style={{ 
+                            padding: '10px', marginBottom: '15px', borderRadius: '4px', textAlign: 'center', fontWeight: 700, 
+                            backgroundColor: message.type === 'success' ? '#d8ead8' : '#f7d7da', 
+                            color: message.type === 'success' ? '#38761d' : '#721c24',
+                            border: `1px solid ${message.type === 'success' ? '#70a75d' : '#e76c76'}`
+                        }}>
+                            {message.text}
+                        </div>
+                    )}
+
+                    <table className="tabla-gestion">
                         <thead>
-                            <tr style={{borderBottom: '2px solid #b37d00'}}>
-                                <th style={{padding: '12px'}}>Nombre</th>
-                                <th style={{padding: '12px'}}>Stock</th>
-                                <th style={{padding: '12px'}}>Estado</th>
-                                <th style={{padding: '12px'}}>Acciones</th>
+                            <tr>
+                                <th style={{ width: '60px' }}>ID</th>
+                                <th style={{ width: '100px' }}>Nombre</th>
+                                <th style={{ width: '70px' }}>Cant.</th>
+                                <th style={{ width: '100px' }}>Estado</th>
+                                <th style={{ width: '200px' }}>Descripción</th>
+                                <th style={{ width: '170px' }}>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {herramientas.map((h) => (
-                                <tr key={h.id_herramienta || h.id} style={{borderBottom: '1px solid #eee'}}>
-                                    <td style={{padding: '12px'}}>{h.nombre}</td>
-                                    <td style={{padding: '12px'}}>{h.cantidad}</td>
-                                    <td style={{padding: '12px'}}>{h.estado}</td>
-                                    <td style={{padding: '12px', display: 'flex', gap: '8px', justifyContent: 'center'}}>
-                                        <button onClick={() => prepararEdicion(h)} style={{padding: '7px 15px', cursor: 'pointer', backgroundColor: '#b37d00', color: 'white', border: 'none', borderRadius: '4px', fontWeight: 'bold'}}>Editar</button>
-                                        <button onClick={() => eliminarHerramienta(h.id_herramienta || h.id)} style={{padding: '7px 15px', cursor: 'pointer', backgroundColor: '#ff0000', color: 'white', border: 'none', borderRadius: '4px', fontWeight: 'bold'}}>Eliminar</button>
-                                    </td>
+                            {herramientas.length > 0 ? (
+                                herramientas.map((h) => (
+                                    <tr key={h.id_herramienta || h.id}>
+                                        <td style={{ fontSize: '0.85em', color: '#666' }}>{h.id_herramienta || h.id}</td>
+                                        <td style={{ fontWeight: 'bold', color: '#000' }}>{h.nombre}</td>
+                                        <td style={{ fontWeight: 'bold' }}>{h.cantidad}</td>
+                                        <td>
+                                            <span style={{
+                                                padding: '4px 8px', borderRadius: '12px', fontSize: '0.8em', fontWeight: 'bold',
+                                                backgroundColor: h.estado === 'Disponible' ? '#e6f4ea' : '#fff8e1',
+                                                color: h.estado === 'Disponible' ? '#1e7e34' : '#b8860b'
+                                            }}>
+                                                {h.estado}
+                                            </span>
+                                        </td>
+                                        <td style={{ fontSize: '0.9em', textAlign: 'left' }}>{h.descripcion || 'Sin descripción'}</td>
+                                        <td>
+                                            <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+                                                <button 
+                                                    onClick={() => prepararEdicion(h)} 
+                                                    className="btn-editar" 
+                                                    style={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '6px',
+                                                        padding: '7px 12px', 
+                                                        cursor: 'pointer', 
+                                                        backgroundColor: 'var(--color-principal)', 
+                                                        color: 'white', 
+                                                        border: 'none', 
+                                                        borderRadius: '4px', 
+                                                        fontSize: '0.9em'
+                                                    }}
+                                                >
+                                                    <i className="fa-solid fa-pen"></i> Editar
+                                                </button>
+                                                
+                                                <button 
+                                                    onClick={() => eliminarHerramienta(h.id_herramienta || h.id)} 
+                                                    className="btn-eliminar" 
+                                                    style={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '6px',
+                                                        padding: '7px 12px', 
+                                                        cursor: 'pointer', 
+                                                        backgroundColor: '#ff0000', 
+                                                        color: 'white', 
+                                                        border: 'none', 
+                                                        borderRadius: '4px', 
+                                                        fontSize: '0.9em'
+                                                    }}
+                                                >
+                                                    <i className="fa-solid fa-trash"></i> Borrar
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="6" style={{ padding: '20px' }}>No hay herramientas registradas.</td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
                     </table>
-                </>
+                </div>
             ) : (
-                <>
+                <div className="registro-card"> 
                     <h2>Modificar Herramienta</h2>
+                    {message && (
+                        <div style={{ 
+                            padding: '10px', margin: '10px 0 15px', borderRadius: '4px', textAlign: 'center', fontWeight: 700,
+                            backgroundColor: message.type === 'success' ? '#d8ead8' : '#f7d7da',
+                            color: message.type === 'success' ? '#38761d' : '#721c24',
+                            border: `1px solid ${message.type === 'success' ? '#70a75d' : '#e76c76'}`
+                        }}>
+                            {message.text}
+                        </div>
+                    )}
                     <form onSubmit={handleUpdate}>
-                        <div className="form-group-material"><label>Nombre</label><input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Ej: Martillo de uña" required /></div>
-                        <div className="form-group-material"><label>Cantidad</label><input type="number" value={cantidad} onChange={(e) => setCantidad(e.target.value)} placeholder="Ej: 10" required /></div>
+                        <div className="form-group-material">
+                            <label>Nombre de la Herramienta</label>
+                            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+                        </div>
+                        <div className="form-group-material">
+                            <label>Cantidad (Stock)</label>
+                            <input type="number" value={cantidad} onChange={(e) => setCantidad(e.target.value)} required />
+                        </div>
                         <div className="form-group-material">
                             <label>Estado</label>
-                            <select value={estado} onChange={(e) => setEstado(e.target.value)}>
+                            <select value={estado} onChange={(e) => setEstado(e.target.value)} style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}>
                                 <option value="Disponible">Disponible</option>
                                 <option value="En Uso">En Uso</option>
                                 <option value="Mantenimiento">Mantenimiento</option>
                                 <option value="Dañado">Dañado</option>
                             </select>
                         </div>
-                        <div className="form-group-material"><label>Descripción</label><textarea value={descripcion} onChange={(e) => setDescripcion(e.target.value)} rows="4" placeholder="Ubicación o estado detallado..." /></div>
-                        <button type="submit" disabled={loading}>{loading ? 'Actualizando...' : 'Actualizar Herramienta'}</button>
-                        <button type="button" onClick={() => setHerramientaSeleccionada(null)} style={{ marginTop: '10px', backgroundColor: '#6c757d', color: 'white', width: '100%', padding: '10px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Cancelar</button>
+                        <div className="form-group-material">
+                            <label>Descripción / Detalles</label>
+                            <textarea value={descripcion} onChange={(e) => setDescripcion(e.target.value)} rows="4" />
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                            <button type="submit" disabled={loading} className="btn-actualizar">
+                                {loading ? 'Actualizando...' : 'Actualizar Herramienta'}
+                            </button>
+                            <button type="button" onClick={() => setHerramientaSeleccionada(null)} style={{ backgroundColor: '#6c757d', marginTop: '0' }}>
+                                Cancelar
+                            </button>
+                        </div>
                     </form>
-                </>
+                </div>
             )}
         </div>
     );

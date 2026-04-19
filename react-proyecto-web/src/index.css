@@ -1,9 +1,10 @@
-/* ------------------------------------------- */
+ /* ------------------------------------------- */
 /* VARIABLES DE COLOR GLOBALES */
 /* ------------------------------------------- */
+
 :root {
-    --color-principal: #c28200; 
-    --color-fondo: #e9ecef; 
+    --color-principal: #c28200;
+    --color-fondo: #e9ecef;
     --color-texto: #333;
     --color-borde: #ccc;
 }
@@ -11,13 +12,14 @@
 /* ------------------------------------------- */
 /* 1. ESTILO DE LA TARJETA CONTENEDORA (.registro-card) */
 /* ------------------------------------------- */
+
 .registro-card {
     background: white;
     padding: 30px 40px;
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    border-top: 5px solid var(--color-principal); 
-    max-width: 700px; 
+    border-top: 5px solid var(--color-principal);
+    max-width: 700px;
     width: 100%;
     margin: 40px auto;
     text-align: center;
@@ -27,6 +29,7 @@
 /* ------------------------------------------- */
 /* 2. ESTILO DEL TÍTULO (h2) */
 /* ------------------------------------------- */
+
 .registro-card h2 {
     color: var(--color-principal);
     margin-bottom: 15px;
@@ -37,9 +40,10 @@
 /* ------------------------------------------- */
 /* 3. ESTILOS DE GRUPOS Y ETIQUETAS */
 /* ------------------------------------------- */
+
 .form-group-material {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .form-group-material label {
@@ -51,6 +55,7 @@
 }
 
 /* Fila para campos compartidos (como Nombres y Apellidos) */
+
 .form-row {
     display: flex;
     gap: 20px;
@@ -63,27 +68,28 @@
 /* ------------------------------------------- */
 /* 4. ESTILOS DE CAMPOS DE ENTRADA (ACTUALIZADO) */
 /* ------------------------------------------- */
+
 .registro-card input[type="text"],
 .registro-card input[type="number"],
 .registro-card input[type="email"],    /* ✅ Soporte para correo */
 .registro-card input[type="password"], /* ✅ Soporte para clave */
-.registro-card textarea, 
-.registro-card select { 
+.registro-card textarea,
+.registro-card select {
     width: 100%;
     padding: 12px;
     border: 1px solid var(--color-borde);
     border-radius: 6px;
-    box-sizing: border-box; 
-    font-size: 16px; 
-    color: var(--color-texto); 
+    box-sizing: border-box;
+    font-size: 16px;
+    color: var(--color-texto);
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.registro-card input:focus, 
+.registro-card input:focus,
 .registro-card textarea:focus,
-.registro-card select:focus { 
-    border-color: var(--color-principal); 
-    box-shadow: 0 0 0 3px rgba(194, 130, 0, 0.4); 
+.registro-card select:focus {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 0 3px rgba(194, 130, 0, 0.4);
     outline: none;
 }
 
@@ -102,7 +108,7 @@
     width: 100%;
     margin-bottom: 20px;
     transition: background-color 0.2s, transform 0.1s;
-    margin-top: 25px; 
+    margin-top: 25px;
 }
 
 .registro-card button:hover {
@@ -113,15 +119,31 @@
 /* ------------------------------------------- */
 /* 6. ESTILOS PARA LAS TABLAS DE INVENTARIO */
 /* ------------------------------------------- */
+
 .tabla-contenedor {
     background: white;
-    padding: 30px;
+    padding: 30px 40px;
+    display: block;
+    text-align: center;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     border-top: 5px solid var(--color-principal);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     margin: 20px auto;
+    max-width: 1000px;
     width: 95%;
-    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.titulo-seccion {
+    margin: 0 30px 20px 30px; 
+    color: var(--color-principal);
+}
+
+.seccion-centrada {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .tabla-contenedor h2 {
@@ -133,25 +155,46 @@
 }
 
 .tabla-gestion {
-    width: 100%;
-    border-collapse: collapse;
+    background-color: transparent; 
+    width: 100% !important; 
+    border-collapse: collapse; 
+    border-spacing: 0;
+    margin-top: 20px;
+    table-layout: fixed;
+    word-wrap: break-word;
+    border: none;
+    overflow: hidden; 
 }
 
 .tabla-gestion th {
     background-color: var(--color-principal);
     color: white;
-    padding: 14px;
-    text-align: left;
+    padding: 15px 20px;
+    text-align: center; 
     font-weight: 700;
     text-transform: uppercase;
     font-size: 14px;
 }
 
 .tabla-gestion td {
-    padding: 12px;
+    padding: 15px 20px;
     border-bottom: 1px solid var(--color-borde);
     color: var(--color-texto);
     font-size: 15px;
+    text-align: center; 
+    vertical-align: middle; 
+}
+
+.tabla-gestion td:last-child {
+    white-space: normal;
+    line-height: 1.4;
+    min-width: 150px;
+}
+
+.tabla-gestion tr:last-child td:first-child,
+.tabla-gestion tr:last-child td:last-child {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .tabla-gestion tr:nth-child(even) {
@@ -162,32 +205,252 @@
     background-color: #f1f1f1;
 }
 
+.col-descripcion {
+    min-width: 250px;  /* Le da un ancho mínimo grande */
+    text-align: left !important; /* La descripción suele leerse mejor a la izquierda */
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: normal; 
+    word-break: break-word;
+}
+
 /* ------------------------------------------- */
 /* 7. COLORES PARA ESTADOS REPETIDOS (BADGES) - RESTAURADO */
 /* ------------------------------------------- */
-.estado-bueno { 
-    color: #28a745; 
-    font-weight: bold; 
+
+.estado-bueno {
+    color: #28a745;
+    font-weight: bold;
     background: #e8f5e9;
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 13px;
+    display: inline-block; 
+    min-width: 80px;
 }
 
-.estado-regular { 
-    color: #fd7e14; 
-    font-weight: bold; 
+.estado-regular {
+    color: #fd7e14;
+    font-weight: bold;
     background: #fff3e0;
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 13px;
+    display: inline-block; 
+    min-width: 80px;
 }
 
-.estado-malo { 
-    color: #dc3545; 
-    font-weight: bold; 
+.estado-malo {
+    color: #dc3545;
+    font-weight: bold;
     background: #ffebee;
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 13px;
+    display: inline-block; 
+    min-width: 80px;
+}
+
+/* ------------------------------------------- */
+/* 8. ESTILOS ESPECÍFICOS PARA GESTIÓN DE SOLICITUDES */
+/* ------------------------------------------- */
+
+/* Badges de Estado para Solicitudes */
+.estado-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.estado-badge.pendiente {
+    background-color: #fff3cd; /* Amarillo claro */
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.estado-badge.aprobado {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.estado-badge.rechazado {
+    background-color: #f8d7da; /* Rojo claro */
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Tags para el tipo de insumo (Material vs Herramienta) */
+.tag-material {
+    background-color: #e1f5fe;
+    color: #0277bd;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.tag-herramienta {
+    background-color: #ede7f6;
+    color: #0277bd;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+/* ------------------------------------------- */
+/* 9. ESTILO EXCLUSIVO PARA GESTIÓN DE SOLICITUDES */
+/* (Para no afectar a Materiales ni Herramientas) */
+/* ------------------------------------------- */
+
+/* Usaremos este ID o clase en tu contenedor de Solicitudes */
+.seccion-solicitudes {
+    background: white !important;
+    padding: 0 !important; /* Quitamos padding para que el café llegue al borde */
+    border-radius: 12px !important; /* Curva sutil profesional */
+    overflow: hidden !important; /* Corta las esquinas del encabezado café */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    border-top: 5px solid var(--color-principal) !important;
+    margin: 20px auto !important;
+    width: 95% !important;
+}
+
+/* Título interno ajustado */
+.seccion-solicitudes h2 {
+    padding: 20px 0;
+    margin: 0;
+    background-color: white;
+}
+
+/* Ajuste de la tabla para que no se vea "apretada" */
+.seccion-solicitudes .tabla-gestion {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+/* Forzamos que el texto de observaciones no rompa la tabla */
+.seccion-solicitudes td {
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 250px; /* Evita que la columna de observaciones se estire de más */
+}
+
+/* Botones de acción más compactos para que quepan bien */
+.seccion-solicitudes .btn-accion {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin: 2px;
+}
+
+/* Contenedor gris principal */
+.cuadro-solicitudes {
+    background-color: #d9d9d9;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 95%;           /* Ocupa casi todo el ancho */
+    max-width: 1400px;    /* Límite para que no se deforme en monitores ultra-wide */
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+/* Ajuste sutil para que el buscador no se vea gigante */
+.buscador-solicitudes {
+    width: 100%;
+    max-width: 450px;
+    padding: 10px 15px 10px 40px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.buscador-solicitudes:focus {
+    border-color: var(--color-principal);
+}
+
+/* Anulamos el cuadro gris padre solo para esta sección */
+#atender-solicitudes-container {
+    background-color: transparent !important; /* Quitamos el gris de fondo */
+    box-shadow: none !important;            /* Quitamos la sombra del padre */
+    padding: 0 !important;                  /* Quitamos el espacio interno */
+    width: 95% !important;                  /* Forzamos a que sea ancho */
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+}
+
+/* El nuevo recuadro blanco con la línea amarilla (Captura 2) */
+.tabla-blanca-solicitudes {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 25px;
+    border-top: 8px solid #cc9900; /* LA RAYITA AMARILLA */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- ESTILOS EXTRA PARA RECEPCION --- */
+
+.recepcion-container {
+    width: 100%;
+    max-width: 660px;
+    margin: 20px auto;
+    border-top: 8px solid #cc9900 !important; /* Rayita amarilla más gruesa */
+}
+
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+/* Caja de alertas */
+.alert-box {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.alert-box.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-box.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Ajuste para que los inputs no se vean pegados en móviles */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* Efecto focus mejorado para los selectores */
+.form-recepcion select:focus, 
+.form-recepcion input:focus {
+    border-color: #cc9900;
+    box-shadow: 0 0 5px rgba(204, 153, 0, 0.5);
+    outline: none;
 }

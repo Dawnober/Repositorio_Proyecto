@@ -16,7 +16,7 @@ function RegistroMaterial() {
 
         const datosMaterial = { 
             nombre: nombre, 
-            cantidad: parseFloat(cantidad), // Convertir a número antes de enviar
+            cantidad: parseFloat(cantidad),
             unidad: unidad,
             descripcion: descripcion,
         };
@@ -36,7 +36,6 @@ function RegistroMaterial() {
                 setMessage({ type: 'success', text: data.message });
                 setNombre(''); setCantidad(''); setUnidad(''); setDescripcion('');
             } else { 
-                // Se usa el mensaje del backend o un genérico
                 setMessage({ type: 'error', text: data.message || 'Error desconocido al registrar.' });
             }
 
