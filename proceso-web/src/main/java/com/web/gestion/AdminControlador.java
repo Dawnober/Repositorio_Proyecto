@@ -18,6 +18,8 @@ public class AdminControlador extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
+        
+        // Verificación de seguridad
         if (session == null || session.getAttribute("isLoggedIn") == null || 
             !(Boolean)session.getAttribute("isLoggedIn")) {
             response.sendRedirect(request.getContextPath() + "/index.jsp"); 
@@ -27,33 +29,28 @@ public class AdminControlador extends HttpServlet {
         String view = request.getParameter("view"); 
         String moduloActual; 
 
-        if (view == null || view.isEmpty() || view.equals("contenido1")) {
-            moduloActual = "contenido1";
+        // Lógica de selección de módulo
+        if (view == null || view.isEmpty()) {
+            moduloActual = "default";
         } 
-        else if (view.equals("contenido2")) {
-            moduloActual = "contenido2";
+        else if (view.equals("contenido1") || view.equals("contenido2") || 
+                 view.equals("contenido3") || view.equals("contenido4") || 
+                 view.equals("contenido5")) {
+            moduloActual = view;
         } 
-        else if (view.equals("contenido3")) {
-            moduloActual = "contenido3";
-        } 
-        else if (view.equals("contenido4")) {
-            moduloActual = "contenido4"; // Menú central de Trabajador
-        }
-        else if (view.equals("contenido5")) {
-            moduloActual = "contenido5"; // Gestión Proveedor
-        }
         else if (view.equals("almacen1") || view.equals("almacen2") || view.equals("almacen3")) {
             moduloActual = view;
         }
         else if (view.startsWith("material") || view.startsWith("herramienta") || 
-                 view.startsWith("proveedor") || view.startsWith("trabajador")) { // <--- Añadido trabajador
+                 view.startsWith("proveedor") || view.startsWith("trabajador")) {
             moduloActual = view;
-        }
+       }
         else {
             moduloActual = "default";
         }
         
-        request.setAttribute("moduloActual", moduloActual); 
+        request.setAttribute("moduloActual", moduloActual);
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Administrador.jsp");
         dispatcher.forward(request, response);
     }

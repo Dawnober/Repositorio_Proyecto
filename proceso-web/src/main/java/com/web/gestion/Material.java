@@ -7,8 +7,7 @@ public class Material {
     
     @JsonProperty("id_material")
     private int id; 
-    
-    private String fecha; // Nuevo campo para la fecha de ingreso
+    private String fecha; 
     private String nombre;
     private BigDecimal cantidad; 
     private String unidad; 

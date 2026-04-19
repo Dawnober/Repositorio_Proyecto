@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConexionConfig {
     
     // Agregamos parámetros para evitar errores de SSL y Timezone comunes en Connector/J 8.x
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/proyecto?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/proyecto?useSSL=false&serverTimezone=America/Bogota&allowPublicKeyRetrieval=true";
     private static final String DB_USER = "root";
     private static final String DB_PASS = ""; 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver"; 

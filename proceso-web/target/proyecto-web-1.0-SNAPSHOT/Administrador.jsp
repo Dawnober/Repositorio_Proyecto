@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YAS CONSTRUCCIONES S.A.S | Área de Administrador</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Administrador.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Estilos.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/react-build/index.css">
 </head>
@@ -30,11 +30,22 @@
     <div class="main-layout">
         <nav class="nav-sidebar">
             <ul class="lista">
-                <li class="botones"><a href="${pageContext.request.contextPath}/administrador/controlador?view=contenido1"><i class="fa-solid fa-store"></i> Almacén</a></li>
-                <li class="botones"><a href="${pageContext.request.contextPath}/administrador/controlador?view=contenido2"><i class="fa-solid fa-boxes-stacked"></i> Material</a></li>
-                <li class="botones"><a href="${pageContext.request.contextPath}/administrador/controlador?view=contenido3"><i class="fa-solid fa-wrench"></i> Herramienta</a></li>
-                <li class="botones"><a href="${pageContext.request.contextPath}/administrador/controlador?view=contenido4"><i class="fa-solid fa-helmet-safety"></i> Trabajador</a></li>
-                <li class="botones"><a href="${pageContext.request.contextPath}/administrador/controlador?view=contenido5"><i class="fa-solid fa-truck"></i> Proveedor</a></li>
+                <%-- Se añade la clase 'activo' comparando con moduloActual --%>
+                <li class="botones ${moduloActual eq 'contenido1' || moduloActual eq 'almacen1' || moduloActual eq 'almacen2' || moduloActual eq 'almacen3' ? 'activo' : ''}">
+                    <a href="${pageContext.request.contextPath}/administrador/controlador?view=contenido1"><i class="fa-solid fa-store"></i> Almacén</a>
+                </li>
+                <li class="botones ${moduloActual eq 'contenido2' || moduloActual eq 'material1' || moduloActual eq 'material2' ? 'activo' : ''}">
+                    <a href="${pageContext.request.contextPath}/administrador/controlador?view=contenido2"><i class="fa-solid fa-boxes-stacked"></i> Material</a>
+                </li>
+                <li class="botones ${moduloActual eq 'contenido3' || moduloActual eq 'herramienta1' || moduloActual eq 'herramienta2' ? 'activo' : ''}">
+                    <a href="${pageContext.request.contextPath}/administrador/controlador?view=contenido3"><i class="fa-solid fa-wrench"></i> Herramienta</a>
+                </li>
+                <li class="botones ${moduloActual eq 'contenido4' || moduloActual eq 'trabajador1' || moduloActual eq 'trabajador2' ? 'activo' : ''}">
+                    <a href="${pageContext.request.contextPath}/administrador/controlador?view=contenido4"><i class="fa-solid fa-helmet-safety"></i> Trabajador</a>
+                </li>
+                <li class="botones ${moduloActual eq 'contenido5' || moduloActual eq 'proveedor1' || moduloActual eq 'proveedor2' ? 'activo' : ''}">
+                    <a href="${pageContext.request.contextPath}/administrador/controlador?view=contenido5"><i class="fa-solid fa-truck"></i> Proveedor</a>
+                </li>
             </ul>
         </nav>
 
@@ -72,7 +83,6 @@
                     </div>
                 </c:when>
 
-                <%-- ACTUALIZADO: MENÚ TRABAJADOR --%>
                 <c:when test="${moduloActual eq 'contenido4'}">
                     <div class="contenido">
                         <h2>Gestión de Trabajadores</h2>
@@ -112,7 +122,6 @@
                     </div>
                 </c:when>
 
-                <%-- NUEVO: VISTA REACT TRABAJADOR --%>
                 <c:when test="${moduloActual eq 'trabajador1' || moduloActual eq 'trabajador2'}">
                     <div class="registro_mat">
                         <div id="root-gestion-trabajador"></div>
@@ -120,19 +129,19 @@
                 </c:when>
 
                 <c:when test="${moduloActual eq 'almacen1'}">
-                    <div class="registro_mat">
+                    <div class="contenedor-limpio">
                         <div id="root-lista-material"></div>
                     </div>
                 </c:when>
 
                 <c:when test="${moduloActual eq 'almacen2'}">
-                    <div class="registro_mat">
+                    <div class="contenedor-limpio">
                         <div id="root-lista-herramienta"></div>
                     </div>
                 </c:when>
 
                 <c:when test="${moduloActual eq 'almacen3'}">
-                    <div class="registro_mat">
+                    <div class="contenedor-limpio">
                         <div id="root-lista-proveedor"></div>
                     </div>
                 </c:when>

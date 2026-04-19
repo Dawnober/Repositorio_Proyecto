@@ -130,9 +130,6 @@ public class TrabajadorDAO {
 
     // --- ELIMINAR ---
     public boolean eliminarTrabajador(int id) {
-        // Al eliminar de 'persona', si tienes ON DELETE CASCADE en la FK de la base de datos, 
-        // se borrará automáticamente de 'trabajador_autorizado'. 
-        // Si no, borramos primero el trabajador y luego la persona.
         String sqlTrabajador = "DELETE FROM trabajador_autorizado WHERE id_trabajador_autorizado = ?";
         String sqlPersona = "DELETE FROM persona WHERE id_persona = ?";
         

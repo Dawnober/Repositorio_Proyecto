@@ -24,7 +24,7 @@ public class Herramienta {
         this.id = id; 
     }
 
-    // --- RESTO DE GETTERS Y SETTERS ---
+    // --- GETTERS Y SETTERS ---
     public Timestamp getFecha() { return fecha; }
     public void setFecha(Timestamp fecha) { this.fecha = fecha; }
 

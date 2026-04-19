@@ -11,8 +11,7 @@ public class EmpresaDAO {
     
     // Consulta de inserción: Solo usamos id_material (FK)
     private static final String INSERT = "INSERT INTO empresa (empresa, id_material, telefono, direccion) VALUES (?, ?, ?, ?)";
-    
-    // CONSULTA CORREGIDA: m.nombre es el nombre real en tu tabla 'material' (visto en image_1d9883.png)
+
     private static final String SELECT_ALL = "SELECT e.id_empresa, e.empresa, e.id_material, m.nombre AS nombre_material_db, e.telefono, e.direccion " +
                                              "FROM empresa e " +
                                              "LEFT JOIN material m ON e.id_material = m.id_material";

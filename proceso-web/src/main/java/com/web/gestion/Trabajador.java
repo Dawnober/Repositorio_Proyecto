@@ -12,7 +12,7 @@ public class Trabajador {
 
     public Trabajador() {}
 
-    // Getters y Setters actualizados
+    // Getters y Setters
     public int getIdPersona() { return idPersona; }
     public void setIdPersona(int idPersona) { this.idPersona = idPersona; }
 
@@ -25,8 +25,8 @@ public class Trabajador {
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) { this.correo = correo; }
 
-    public String getPassword_hash() { return password_hash; } // ✅ Actualizado
-    public void setPassword_hash(String password_hash) { this.password_hash = password_hash; } // ✅ Actualizado
+    public String getPassword_hash() { return password_hash; }
+    public void setPassword_hash(String password_hash) { this.password_hash = password_hash; }
 
     public String getIdentificacion() { return identificacion; }
     public void setIdentificacion(String identificacion) { this.identificacion = identificacion; }

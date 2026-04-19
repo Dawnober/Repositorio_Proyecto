@@ -33,7 +33,7 @@ public class MaterialApi extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         try {
-            // NUEVO: Soporte para buscar un solo material por ID (para editar)
+            // Soporte para buscar un solo material por ID (para editar)
             String idStr = request.getParameter("id");
             if (idStr != null && !idStr.isEmpty()) {
                 int id = Integer.parseInt(idStr);
@@ -77,7 +77,7 @@ public class MaterialApi extends HttpServlet {
         }
     }
 
-    // NUEVO MÉTODO: doPut para guardar los cambios al editar
+    // doPut para guardar los cambios al editar
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
@@ -89,7 +89,7 @@ public class MaterialApi extends HttpServlet {
             String jsonBody = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
             Material materialActualizado = objectMapper.readValue(jsonBody, Material.class);
             
-            // Llamamos al método actualizar que ya tienes en el DAO
+            // Llamamos al método actualizar que ya esta en el DAO
             boolean exito = materialDAO.actualizarMaterial(materialActualizado);
 
             if (exito) {

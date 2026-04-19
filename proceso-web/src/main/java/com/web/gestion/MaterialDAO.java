@@ -9,11 +9,11 @@ import java.util.List;
 
 public class MaterialDAO {
     
-    // Agregamos 'fecha' al INSERT. Usamos CURDATE() para que MySQL ponga la fecha actual automáticamente.
+    // 'fecha' al INSERT. Usamos CURDATE() para que MySQL ponga la fecha actual automáticamente.
     private static final String INSERT_MATERIAL_SQL = 
         "INSERT INTO material (nombre, cantidad, unidad, descripcion, fecha) VALUES (?, ?, ?, ?, CURDATE())";
 
-    // Agregamos 'fecha' al SELECT
+    // 'fecha' al SELECT
     private static final String SELECT_ALL_MATERIALES = 
         "SELECT id_material, fecha, nombre, cantidad, unidad, descripcion FROM material";
 

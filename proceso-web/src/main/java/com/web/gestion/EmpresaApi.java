@@ -73,7 +73,7 @@ public class EmpresaApi extends HttpServlet {
         }
     }
 
-    // --- NUEVO: SOPORTE PARA ACTUALIZAR ---
+    // --- SOPORTE PARA ACTUALIZAR ---
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
@@ -97,7 +97,7 @@ public class EmpresaApi extends HttpServlet {
         }
     }
 
-    // --- NUEVO: SOPORTE PARA ELIMINAR ---
+    // --- SOPORTE PARA ELIMINAR ---
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {

@@ -204,13 +204,12 @@
             transform: translateY(0);
         }
         
-        /* 🔑 POSICIONAMIENTO FIJO Y VISIBLE */
+        /* POSICIONAMIENTO FIJO Y VISIBLE */
         .message-container {
             position: fixed; 
-            width: 300px; /* Ancho deseado */
+            width: 300px; 
             z-index: 100; 
             left: 50px; 
-            /* 🔑 OSICIONAMIENTO VERTICAL (Fijo debajo del logo) */
             top: 300px; 
         }
         
